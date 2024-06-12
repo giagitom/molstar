@@ -350,7 +350,7 @@ export class DrawPass {
             this._renderWboit(renderer, camera, scene, transparentBackground, props.postprocessing);
             oitEnabled = true;
         } else if (this.transparencyMode === 'dpoit' && this.dpoit.supported) {
-            this._renderDpoit(renderer, camera, scene, props.dpoitIterations, transparentBackground, props.postprocessing);
+            this._renderDpoit(renderer, camera, scene, renderer.props.dpoitMonoLayerFlag ? 1 : props.dpoitIterations, transparentBackground, props.postprocessing);
             oitEnabled = true;
         } else {
             this._renderBlended(renderer, camera, scene, !volumeRendering && !postprocessingEnabled && !antialiasingEnabled && toDrawingBuffer, transparentBackground, props.postprocessing);

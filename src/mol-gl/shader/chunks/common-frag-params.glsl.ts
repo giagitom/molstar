@@ -49,6 +49,7 @@ uniform vec4 uLod;
     #define MAX_DPOIT_DEPTH 99999.0 // NOTE constant also set in TypeScript
     uniform sampler2D tDpoitDepth;
     uniform sampler2D tDpoitFrontColor;
+    uniform bool uDpoitMonoLayerFlag;
 #endif
 
 varying vec3 vModelPosition;

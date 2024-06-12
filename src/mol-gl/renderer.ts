@@ -97,6 +97,7 @@ export const RendererParams = {
 
     interiorDarkening: PD.Numeric(0.5, { min: 0.0, max: 1.0, step: 0.01 }),
     interiorColorFlag: PD.Boolean(true, { label: 'Use Interior Color' }),
+    dpoitMonoLayerFlag: PD.Boolean(false, { label: 'Use monolayer Depth Peeling' }),
     interiorColor: PD.Color(Color.fromNormalizedRgb(0.3, 0.3, 0.3)),
 
     colorMarker: PD.Boolean(true, { description: 'Enable color marker' }),
@@ -243,6 +244,8 @@ namespace Renderer {
             uAmbientColor: ValueCell.create(ambientColor),
 
             uPickingAlphaThreshold: ValueCell.create(p.pickingAlphaThreshold),
+
+            uDpoitMonoLayerFlag: ValueCell.create(p.dpoitMonoLayerFlag),
 
             uInteriorDarkening: ValueCell.create(p.interiorDarkening),
             uInteriorColorFlag: ValueCell.create(p.interiorColorFlag),
@@ -807,6 +810,10 @@ namespace Renderer {
                 if (props.interiorDarkening !== undefined && props.interiorDarkening !== p.interiorDarkening) {
                     p.interiorDarkening = props.interiorDarkening;
                     ValueCell.update(globalUniforms.uInteriorDarkening, p.interiorDarkening);
+                }
+                if (props.dpoitMonoLayerFlag !== undefined && props.dpoitMonoLayerFlag !== p.dpoitMonoLayerFlag) {
+                    p.dpoitMonoLayerFlag = props.dpoitMonoLayerFlag;
+                    ValueCell.update(globalUniforms.uDpoitMonoLayerFlag, p.dpoitMonoLayerFlag);
                 }
                 if (props.interiorColorFlag !== undefined && props.interiorColorFlag !== p.interiorColorFlag) {
                     p.interiorColorFlag = props.interiorColorFlag;

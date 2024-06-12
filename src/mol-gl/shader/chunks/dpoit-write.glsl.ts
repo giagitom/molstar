@@ -58,7 +58,7 @@ export const dpoit_write = `
                 gl_FragColor.rgb += fragColor.rgb * fragColor.a * alphaMultiplier;
                 gl_FragColor.a = 1.0 - alphaMultiplier * (1.0 - fragColor.a);
             } else {
-                gl_FragData[1] += fragColor;
+                if (!uDpoitMonoLayerFlag) gl_FragData[1] += fragColor;
             }
 
         } else {
